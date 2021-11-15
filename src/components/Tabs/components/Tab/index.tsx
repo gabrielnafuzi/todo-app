@@ -9,7 +9,7 @@ export type TabProps = {
 export const Tab = ({ label, active, onClick }: TabProps) => {
   return (
     <S.Wrapper active={active} onClick={onClick}>
-      {label}
+      <span>{label}</span>
 
       {active ? <S.Underline layoutId="underline" /> : null}
     </S.Wrapper>

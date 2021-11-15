@@ -30,6 +30,7 @@ export const Wrapper = styled.li<WrapperProps>`
     position: relative;
     user-select: none;
     height: 100%;
+    transition: 0.6s ease;
 
     ${active && wrapperModifiers.active()}
   `}
