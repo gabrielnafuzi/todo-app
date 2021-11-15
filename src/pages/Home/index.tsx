@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@/components'
+import { Tabs, TabList, Tab, TabPanels, TabPanel, Checkbox } from '@/components'
 
 const tabs = ['All', 'Active', 'Completed'] as const
 type TabsType = typeof tabs[number]
@@ -11,6 +11,7 @@ const initialTab = tabs.includes(tabParam) ? tabParam : 'All'
 
 export const Home = () => {
   const [selectedTab, setSelectedTab] = useState<TabsType>(initialTab)
+  const [isCompleted, setIsCompleted] = useState<boolean>(false)
 
   const handleSetSelectedTab = (tab: TabsType) => {
     setSelectedTab(tab)
@@ -32,7 +33,12 @@ export const Home = () => {
       </TabList>
 
       <TabPanels activeTab={selectedTab}>
-        <TabPanel tabKey="all">First panel</TabPanel>
+        <TabPanel tabKey="all">
+          <Checkbox
+            checked={isCompleted}
+            onClick={() => setIsCompleted(!isCompleted)}
+          />
+        </TabPanel>
         <TabPanel tabKey="active">second panel</TabPanel>
         <TabPanel tabKey="completed">third panel</TabPanel>
       </TabPanels>

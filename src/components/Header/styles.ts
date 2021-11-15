@@ -6,6 +6,7 @@ export const Wrapper = styled(motion.header)`
   max-width: max-content;
   margin-left: auto;
   margin-right: auto;
+  user-select: none;
 `
 
 export const Title = styled.span`
