@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Tabs, TabList, Tab, TabPanels, TabPanel, Checkbox } from '@/components'
+import { Tabs, TabList, Tab, TabPanels, TabPanel, TodoItem } from '@/components'
 
 const tabs = ['All', 'Active', 'Completed'] as const
 type TabsType = typeof tabs[number]
@@ -34,9 +34,11 @@ export const Home = () => {
 
       <TabPanels activeTab={selectedTab}>
         <TabPanel tabKey="all">
-          <Checkbox
-            checked={isCompleted}
-            onClick={() => setIsCompleted(!isCompleted)}
+          <TodoItem
+            text="Do coding challenges"
+            isCompleted={isCompleted}
+            onComplete={() => setIsCompleted(!isCompleted)}
+            onDelete={() => console.log('delete')}
           />
         </TabPanel>
         <TabPanel tabKey="active">second panel</TabPanel>

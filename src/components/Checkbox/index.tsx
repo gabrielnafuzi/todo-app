@@ -21,7 +21,6 @@ export const Checkbox = ({ checked = false, onClick }: CheckboxProps) => {
         borderColor: checked ? theme.colors.primary : theme.colors.darkGray,
         backgroundColor: checked ? theme.colors.primary : theme.colors.white
       }}
-      transition={{ type: 'spring' }}
       onTap={onClick}
     >
       <svg
@@ -37,6 +36,7 @@ export const Checkbox = ({ checked = false, onClick }: CheckboxProps) => {
           strokeLinecap="round"
           strokeWidth="2.4"
           animate={{ pathLength: checked ? 1 : 0 }}
+          transition={{ duration: 0.25 }}
           style={{ pathLength: pathLength, opacity: opacity }}
         />
       </svg>

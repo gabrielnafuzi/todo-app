@@ -15,8 +15,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
+      overflow-x: hidden;
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
+      color: ${theme.colors.black};
     }
   `}
 `
