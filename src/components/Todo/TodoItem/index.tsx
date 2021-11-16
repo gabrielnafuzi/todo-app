@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, PanInfo } from 'framer-motion'
+import { motion, PanInfo } from 'framer-motion'
 import { MdDeleteOutline } from 'react-icons/md'
 
 import { Checkbox } from '@/components'

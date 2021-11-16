@@ -1,5 +1,6 @@
-export { Header } from './Header'
-export { Container } from './Container'
+export * from './Header'
+export * from './Container'
 export * from './Tabs'
 export * from './Checkbox'
 export * from './Todo'
+export * from './Input'

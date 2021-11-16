@@ -1,4 +1,4 @@
-import { Children, ReactElement } from 'react'
+import { Children, ReactElement, useCallback, useMemo } from 'react'
 
 import { AnimatePresence } from 'framer-motion'
 
@@ -15,13 +15,16 @@ export const TabPanels = ({ children, activeTab }: TabPanelsProps) => {
     children
   ) as ReactElement<TabPanelProps>[]
 
-  const renderChildren = (child: ReactElement<TabPanelProps>) => {
-    return child?.props.tabKey.toLowerCase() === activeTab.toLowerCase()
-  }
+  const renderChildren = useCallback(
+    (child: ReactElement<TabPanelProps>) => {
+      return child?.props.tabKey.toLowerCase() === activeTab.toLowerCase()
+    },
+    [activeTab]
+  )
 
   return (
     <S.Wrapper>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence initial={false} exitBeforeEnter>
         {arrayChildren.map((child) => (renderChildren(child) ? child : null))}
       </AnimatePresence>
     </S.Wrapper>
