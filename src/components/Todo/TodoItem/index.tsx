@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 import { MdDeleteOutline } from 'react-icons/md'
 
 import { Checkbox } from '@/components'
@@ -6,10 +6,13 @@ import { theme } from '@/styles'
 
 import * as S from './styles'
 
+const POINT_X_NUMBER_TO_COMPLETE_ON_DRAG = 160
+
 export type TodoItemProps = {
   isCompleted: boolean
   text: string
   id?: string
+  completeOnDragEnd?: boolean
   onComplete?: (id?: string) => void
   onDelete?: (id?: string) => void
 }
@@ -18,22 +21,49 @@ export const TodoItem = ({
   isCompleted,
   text,
   id,
+  completeOnDragEnd = true,
   onComplete,
   onDelete
 }: TodoItemProps) => {
+  const handleDragEnd = (
+    e: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    if (
+      completeOnDragEnd &&
+      info.point.x >= POINT_X_NUMBER_TO_COMPLETE_ON_DRAG &&
+      onComplete
+    ) {
+      onComplete(id)
+
+      navigator.vibrate?.(100)
+    }
+  }
+
   return (
     <S.Wrapper
       drag="x"
-      dragConstraints={{ left: -2, right: 0 }}
-      dragElastic={{ right: 0, left: 0.1 }}
-      onDragEnd={(e, { offset }) => {
-        if (offset.x < -240) onComplete?.(id)
-      }}
+      dragConstraints={{ left: 0, right: 1 }}
+      dragElastic={{ right: 0.15, left: 0 }}
+      onDragEnd={handleDragEnd}
     >
       <S.CheckboxTextWrapper>
         <Checkbox checked={isCompleted} onClick={() => onComplete?.(id)} />
 
-        <S.Text isCompleted={isCompleted}>{text}</S.Text>
+        <S.Text
+          initial={false}
+          animate={{ x: isCompleted ? [0, 15, 0] : 0 }}
+          transition={{ duration: 0.3 }}
+          isCompleted={isCompleted}
+        >
+          {text}
+
+          <S.LineThrough
+            initial={false}
+            animate={{ width: isCompleted ? '100%' : '0%' }}
+            transition={{ duration: 0.15 }}
+          />
+        </S.Text>
       </S.CheckboxTextWrapper>
 
       {!!onDelete && (
@@ -41,6 +71,7 @@ export const TodoItem = ({
           style={{ color: theme.colors.gray }}
           whileHover={{ scale: 1.1, color: theme.colors.red }}
           whileTap={{ scale: 0.9 }}
+          onClick={() => onDelete?.(id)}
         >
           <MdDeleteOutline size={24} cursor="pointer" />
         </motion.div>
