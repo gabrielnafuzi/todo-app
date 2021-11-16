@@ -1,6 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import { Tabs, TabList, Tab, TabPanels, TabPanel, TodoItem } from '@/components'
+import {
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+  TodoItem,
+  Input
+} from '@/components'
 
 const tabs = ['All', 'Active', 'Completed'] as const
 type TabsType = typeof tabs[number]
@@ -11,7 +19,8 @@ const initialTab = tabs.includes(tabParam) ? tabParam : 'All'
 
 export const Home = () => {
   const [selectedTab, setSelectedTab] = useState<TabsType>(initialTab)
-  const [isCompleted, setIsCompleted] = useState<boolean>(false)
+  const [isCompleted, setIsCompleted] = useState(false)
+  const todoTextInput = useRef<HTMLInputElement | null>(null)
 
   const handleSetSelectedTab = (tab: TabsType) => {
     setSelectedTab(tab)
@@ -34,6 +43,8 @@ export const Home = () => {
 
       <TabPanels activeTab={selectedTab}>
         <TabPanel tabKey="all">
+          <Input placeholder="add details" ref={todoTextInput} />
+
           <TodoItem
             text="Do coding challenges"
             isCompleted={isCompleted}
@@ -41,6 +52,7 @@ export const Home = () => {
             onDelete={() => console.log('delete')}
           />
         </TabPanel>
+
         <TabPanel tabKey="active">second panel</TabPanel>
         <TabPanel tabKey="completed">third panel</TabPanel>
       </TabPanels>
