@@ -30,13 +30,13 @@ type TodoListProps = {
   todos: Todo[]
   showDelete?: boolean
   emptyMessage?: string
-  willDesappearWhenCompleted?: boolean
+  willDisappearWhenCompleted?: boolean
 }
 
 export const TodoList = ({
   todos,
   showDelete = false,
-  willDesappearWhenCompleted = false,
+  willDisappearWhenCompleted = false,
   emptyMessage
 }: TodoListProps) => {
   return (
@@ -48,7 +48,7 @@ export const TodoList = ({
               <TodoItem
                 {...todo}
                 showDelete={showDelete}
-                willDesappearWhenCompleted={willDesappearWhenCompleted}
+                willDisappearWhenCompleted={willDisappearWhenCompleted}
               />
             </motion.li>
           ))

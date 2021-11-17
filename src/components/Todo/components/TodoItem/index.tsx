@@ -1,3 +1,5 @@
+import { useState, useMemo } from 'react'
+
 import { AnimatePresence, motion, PanInfo, useAnimation } from 'framer-motion'
 import { MdDeleteOutline } from 'react-icons/md'
 
@@ -9,10 +11,12 @@ import * as S from './styles'
 
 const INFO_OFFSET_X_NUMBER_TO_COMPLETE_ON_DRAG = 100
 
+type ForcedStatus = 'checked' | 'unchecked' | 'indeterminate'
+
 export type TodoItemProps = {
   completeOnDragEnd?: boolean
   showDelete?: boolean
-  willDesappearWhenCompleted?: boolean
+  willDisappearWhenCompleted?: boolean
 } & Todo
 
 export const TodoItem = ({
@@ -21,16 +25,21 @@ export const TodoItem = ({
   isCompleted,
   showDelete = false,
   text,
-  willDesappearWhenCompleted = false
+  willDisappearWhenCompleted = false
 }: TodoItemProps) => {
+  const [forcedStatus, setForcedStatus] =
+    useState<ForcedStatus>('indeterminate')
+
   const animation = useAnimation()
 
   const handleToggleCompleted = async () => {
-    if (willDesappearWhenCompleted) {
+    if (willDisappearWhenCompleted) {
+      setForcedStatus(isCompleted ? 'unchecked' : 'checked')
+
       await animation.start(() => ({
         opacity: 0,
         x: 40,
-        transition: { duration: 0.3 }
+        transition: { duration: 0.6 }
       }))
     }
 
@@ -58,9 +67,15 @@ export const TodoItem = ({
     ) {
       handleToggleCompleted()
 
-      navigator.vibrate?.(100)
+      navigator.vibrate?.(50)
     }
   }
+
+  const isChecked = useMemo(() => {
+    if (forcedStatus === 'unchecked') return false
+
+    return isCompleted || forcedStatus === 'checked'
+  }, [forcedStatus, isCompleted])
 
   return (
     <AnimatePresence>
@@ -73,7 +88,7 @@ export const TodoItem = ({
       >
         <S.CheckboxTextWrapper>
           <Checkbox
-            checked={isCompleted}
+            checked={isChecked}
             onClick={() => handleToggleCompleted()}
           />
 
