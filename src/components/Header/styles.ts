@@ -2,11 +2,15 @@ import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled(motion.header)`
-  width: 100%;
-  max-width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-  user-select: none;
+  ${({ theme }) => css`
+    width: 100%;
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+
+    margin-bottom: ${theme.spacings.xxlarge};
+  `}
 `
 
 export const Title = styled.span`

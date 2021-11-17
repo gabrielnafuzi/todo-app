@@ -15,7 +15,6 @@ export const TabPanel = ({ children, tabKey }: TabPanelProps) => {
       initial={{ opacity: 0, y: -20 }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.25 }}
-      layoutId="tabpanel"
     >
       {children}
     </motion.div>

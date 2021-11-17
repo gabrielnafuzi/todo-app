@@ -16,7 +16,6 @@ export const Wrapper = styled.li<WrapperProps>`
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.semibold};
-    margin-top: ${theme.spacings.xxlarge};
 
     border-top-right-radius: 0.4rem;
     border-top-left-radius: 0.4rem;

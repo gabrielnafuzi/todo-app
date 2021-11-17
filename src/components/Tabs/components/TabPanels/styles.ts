@@ -5,5 +5,6 @@ export const Wrapper = styled.main`
     margin-top: ${theme.spacings.small};
     width: 100%;
     height: 100%;
+    padding: 0rem 1.6rem;
   `}
 `
