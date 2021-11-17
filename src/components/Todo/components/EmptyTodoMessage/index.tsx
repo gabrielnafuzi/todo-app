@@ -5,7 +5,7 @@ type EmptyTodoMessageProps = {
 }
 
 export const EmptyTodoMessage = ({
-  message = 'You have no todos. Try adding one!'
+  message = 'you have no todos. Try adding one!'
 }: EmptyTodoMessageProps) => {
   return (
     <S.Wrapper

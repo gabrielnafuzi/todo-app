@@ -17,5 +17,6 @@ export const Message = styled.span`
     margin-top: ${theme.spacings.small};
     font-size: ${theme.font.sizes.large};
     color: ${theme.colors.darkGray};
+    text-align: center;
   `}
 `

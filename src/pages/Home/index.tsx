@@ -60,7 +60,7 @@ export const Home = () => {
 
           <TodoList
             todos={getTodos('active')}
-            emptyMessage="You have no active todos, why not take a break?"
+            emptyMessage="you don't have any active todo, why not take a break?"
           />
         </TabPanel>
 
@@ -68,7 +68,7 @@ export const Home = () => {
           <TodoList
             todos={getTodos('completed')}
             showDelete
-            emptyMessage="You have no completed todos, let's get back to work!"
+            emptyMessage="you don't have any completed todo, let's get back to work!"
           />
         </TabPanel>
       </TabPanels>
