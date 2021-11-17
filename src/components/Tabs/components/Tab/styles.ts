@@ -16,7 +16,6 @@ export const Wrapper = styled.li<WrapperProps>`
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.semibold};
-    margin-top: ${theme.spacings.xxlarge};
 
     border-top-right-radius: 0.4rem;
     border-top-left-radius: 0.4rem;
@@ -31,6 +30,10 @@ export const Wrapper = styled.li<WrapperProps>`
     user-select: none;
     height: 100%;
     transition: 0.6s ease;
+
+    @media screen and (max-width: 23rem) {
+      font-size: ${theme.font.sizes.small};
+    }
 
     ${active && wrapperModifiers.active()}
   `}

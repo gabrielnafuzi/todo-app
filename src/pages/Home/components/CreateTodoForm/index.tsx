@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
 import { Input } from '@/components'
+import { todoActions } from '@/store'
 
 import * as S from './styles'
 
@@ -27,8 +28,8 @@ export const CreateTodoForm = () => {
       return
     }
 
+    todoActions.add(todoText)
     setTodoText('')
-    console.log('add todo')
   }
 
   return (
@@ -41,7 +42,7 @@ export const CreateTodoForm = () => {
       >
         <Input
           key="create-todo-form-input"
-          placeholder="add details"
+          placeholder="do something..."
           value={todoText}
           onChange={handleOnChange}
           isInvalid={isInvalid}
