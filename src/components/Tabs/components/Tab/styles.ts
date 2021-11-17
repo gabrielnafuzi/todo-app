@@ -31,6 +31,10 @@ export const Wrapper = styled.li<WrapperProps>`
     height: 100%;
     transition: 0.6s ease;
 
+    @media (max-width: 23rem) {
+      font-size: ${theme.font.sizes.small};
+    }
+
     ${active && wrapperModifiers.active()}
   `}
 `
