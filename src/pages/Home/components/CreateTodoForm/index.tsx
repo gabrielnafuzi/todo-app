@@ -42,7 +42,7 @@ export const CreateTodoForm = () => {
       >
         <Input
           key="create-todo-form-input"
-          placeholder="What needs to be done?"
+          placeholder="do something..."
           value={todoText}
           onChange={handleOnChange}
           isInvalid={isInvalid}
