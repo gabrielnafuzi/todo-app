@@ -14,9 +14,14 @@ export const GlobalStyles = createGlobalStyle`
       font-size: 62.5%;
     }
 
+    body,
+    button,
+    input {
+      font-family: ${theme.font.family};
+    }
+
     body {
       overflow-x: hidden;
-      font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
       color: ${theme.colors.black};
     }

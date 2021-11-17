@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import {
   Tabs,
@@ -9,6 +9,8 @@ import {
   TodoItem,
   Input
 } from '@/components'
+
+import { CreateTodoForm } from './components'
 
 const tabs = ['All', 'Active', 'Completed'] as const
 type TabsType = typeof tabs[number]
@@ -43,14 +45,7 @@ export const Home = () => {
 
       <TabPanels activeTab={selectedTab}>
         <TabPanel tabKey="all">
-          <Input placeholder="add details" ref={todoTextInput} />
-
-          <TodoItem
-            text="DAR UMA OLHADA EM COMO TÁ FUNCIONANDO O DRAG TO COMPLETE"
-            isCompleted={isCompleted}
-            onComplete={() => setIsCompleted(!isCompleted)}
-            onDelete={() => console.log('delete')}
-          />
+          <CreateTodoForm />
         </TabPanel>
 
         <TabPanel tabKey="active">second panel</TabPanel>

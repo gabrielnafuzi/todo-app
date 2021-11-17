@@ -5,22 +5,23 @@ import {
   HTMLProps
 } from 'react'
 
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, HTMLMotionProps } from 'framer-motion'
 
 import * as S from './styles'
 
 export type InputProps = {
   isInvalid?: boolean
   errorMessage?: string
+  motionProps?: HTMLMotionProps<'div'>
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 } & Omit<HTMLProps<HTMLInputElement>, 'ref' | 'children' | 'onChange'>
 
 const BaseInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { isInvalid = false, errorMessage, onChange, ...props },
+  { isInvalid = false, errorMessage, motionProps, onChange, ...props },
   ref
 ) => {
   return (
-    <S.Wrapper isInvalid={isInvalid}>
+    <S.Wrapper {...motionProps} isInvalid={isInvalid}>
       <input {...props} ref={ref} onChange={onChange} />
 
       <AnimatePresence initial={false}>

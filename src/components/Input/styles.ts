@@ -14,8 +14,9 @@ const wrapperModifiers = {
   `
 }
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled(motion.div)<WrapperProps>`
   height: 6.8rem;
+  width: 100%;
 
   ${({ theme, isInvalid }) => css`
     > input {
