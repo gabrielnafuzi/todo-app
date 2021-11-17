@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { Tabs, TabList, Tab, TabPanels, TabPanel, TodoList } from '@/components'
-import { useTodos } from '@/store'
+import { Filter, useTodos } from '@/store'
 
 import { CreateTodoForm } from './components'
 import * as S from './styles'
@@ -19,7 +19,7 @@ export const Home = () => {
   const [selectedTab, setSelectedTab] = useState<TabsType>(initialTab)
   const { getTodos } = useTodos()
 
-  const handleSetSelectedTab = (tab: TabsType) => {
+  const handleSetSelectedTab = useCallback((tab: TabsType) => {
     setSelectedTab(tab)
 
     window.history.pushState(null, '', `?tab=${tab}`)
@@ -29,7 +29,12 @@ export const Home = () => {
     if (stickyRect?.top === 0) {
       scrollToTopRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
-  }
+  }, [])
+
+  const getFilteredTodosLength = useCallback(
+    (tabType: TabsType) => getTodos(tabType.toLowerCase() as Filter).length,
+    [getTodos]
+  )
 
   return (
     <Tabs>
@@ -40,7 +45,7 @@ export const Home = () => {
           {tabs.map((item) => (
             <Tab
               key={item}
-              label={item}
+              label={`${item} (${getFilteredTodosLength(item)})`}
               active={item === selectedTab}
               onClick={() => handleSetSelectedTab(item)}
             />
@@ -61,6 +66,7 @@ export const Home = () => {
           <TodoList
             todos={getTodos('active')}
             emptyMessage="you don't have any active todo, why not take a break?"
+            willDesappearWhenCompleted
           />
         </TabPanel>
 
@@ -69,6 +75,7 @@ export const Home = () => {
             todos={getTodos('completed')}
             showDelete
             emptyMessage="you don't have any completed todo, let's get back to work!"
+            willDesappearWhenCompleted
           />
         </TabPanel>
       </TabPanels>
