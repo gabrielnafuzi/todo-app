@@ -6,7 +6,7 @@ import { theme } from '@/styles'
 
 import * as S from './styles'
 
-const POINT_X_NUMBER_TO_COMPLETE_ON_DRAG = 160
+const INFO_OFFSET_X_NUMBER_TO_COMPLETE_ON_DRAG = 120
 
 export type TodoItemProps = {
   isCompleted: boolean
@@ -31,7 +31,7 @@ export const TodoItem = ({
   ) => {
     if (
       completeOnDragEnd &&
-      info.point.x >= POINT_X_NUMBER_TO_COMPLETE_ON_DRAG &&
+      info.offset.x >= INFO_OFFSET_X_NUMBER_TO_COMPLETE_ON_DRAG &&
       onComplete
     ) {
       onComplete(id)

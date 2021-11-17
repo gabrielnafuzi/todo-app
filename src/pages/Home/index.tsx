@@ -46,7 +46,7 @@ export const Home = () => {
           <Input placeholder="add details" ref={todoTextInput} />
 
           <TodoItem
-            text="Do coding challenges"
+            text="DAR UMA OLHADA EM COMO TÁ FUNCIONANDO O DRAG TO COMPLETE"
             isCompleted={isCompleted}
             onComplete={() => setIsCompleted(!isCompleted)}
             onDelete={() => console.log('delete')}
