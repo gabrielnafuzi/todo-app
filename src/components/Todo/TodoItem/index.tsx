@@ -3,19 +3,17 @@ import { MdDeleteOutline } from 'react-icons/md'
 
 import { Checkbox } from '@/components'
 import { theme } from '@/styles'
+import { Todo } from '@/types'
 
 import * as S from './styles'
 
 const INFO_OFFSET_X_NUMBER_TO_COMPLETE_ON_DRAG = 120
 
 export type TodoItemProps = {
-  isCompleted: boolean
-  text: string
-  id?: string
   completeOnDragEnd?: boolean
   onComplete?: (id?: string) => void
   onDelete?: (id?: string) => void
-}
+} & Todo
 
 export const TodoItem = ({
   isCompleted,

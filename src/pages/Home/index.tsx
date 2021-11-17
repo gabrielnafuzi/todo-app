@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@/components'
+import { Tabs, TabList, Tab, TabPanels, TabPanel, TodoList } from '@/components'
 
 import { CreateTodoForm } from './components'
 
@@ -36,6 +36,10 @@ export const Home = () => {
       <TabPanels activeTab={selectedTab}>
         <TabPanel tabKey="all">
           <CreateTodoForm />
+
+          <TodoList
+            todos={[{ id: '123', isCompleted: false, text: 'todo item' }]}
+          />
         </TabPanel>
 
         <TabPanel tabKey="active">second panel</TabPanel>
