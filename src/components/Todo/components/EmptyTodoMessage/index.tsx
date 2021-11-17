@@ -13,7 +13,8 @@ export const EmptyTodoMessage = ({
         opacity: [0, 1],
         scale: [0.55, 1]
       }}
-      transition={{ duration: 0.4 }}
+      initial={{ opacity: 0, scale: 0.55 }}
+      transition={{ duration: 0.4, delay: 0.1 }}
     >
       <svg
         width="233"
