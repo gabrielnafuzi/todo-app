@@ -1,14 +1,6 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
-import {
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-  TodoItem,
-  Input
-} from '@/components'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@/components'
 
 import { CreateTodoForm } from './components'
 
@@ -21,8 +13,6 @@ const initialTab = tabs.includes(tabParam) ? tabParam : 'All'
 
 export const Home = () => {
   const [selectedTab, setSelectedTab] = useState<TabsType>(initialTab)
-  const [isCompleted, setIsCompleted] = useState(false)
-  const todoTextInput = useRef<HTMLInputElement | null>(null)
 
   const handleSetSelectedTab = (tab: TabsType) => {
     setSelectedTab(tab)
