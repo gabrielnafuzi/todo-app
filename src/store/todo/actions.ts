@@ -23,3 +23,7 @@ export const toggleCompleted = (id: string) => {
 export const remove = (id: string) => {
   store.todos = store.todos.filter((todo) => todo.id !== id)
 }
+
+export const removeAllCompleted = () => {
+  store.todos = store.todos.filter((todo) => !todo.isCompleted)
+}
