@@ -2,6 +2,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { Header, Container } from '@/components'
 import { Home } from '@/pages/Home'
+import { RegisterPW } from '@/RegisterSW'
 import { GlobalStyles, theme } from '@/styles'
 
 export const App = () => (
@@ -13,5 +14,7 @@ export const App = () => (
 
       <Home />
     </Container>
+
+    <RegisterPW />
   </ThemeProvider>
 )
