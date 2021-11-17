@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, PanInfo } from 'framer-motion'
+import { AnimatePresence, motion, PanInfo, useAnimation } from 'framer-motion'
 import { MdDeleteOutline } from 'react-icons/md'
 
 import { Checkbox } from '@/components'
@@ -12,20 +12,39 @@ const INFO_OFFSET_X_NUMBER_TO_COMPLETE_ON_DRAG = 100
 export type TodoItemProps = {
   completeOnDragEnd?: boolean
   showDelete?: boolean
+  willDesappearWhenCompleted?: boolean
 } & Todo
 
 export const TodoItem = ({
-  isCompleted,
-  text,
+  completeOnDragEnd = true,
   id,
+  isCompleted,
   showDelete = false,
-  completeOnDragEnd = true
+  text,
+  willDesappearWhenCompleted = false
 }: TodoItemProps) => {
-  const handleToggleCompleted = () => {
+  const animation = useAnimation()
+
+  const handleToggleCompleted = async () => {
+    if (willDesappearWhenCompleted) {
+      await animation.start(() => ({
+        opacity: 0,
+        x: 40,
+        transition: { duration: 0.3 }
+      }))
+    }
+
     todoActions.toggleCompleted(id)
   }
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
+    await animation.start(() => ({
+      opacity: 0,
+      y: 200,
+      rotate: 30,
+      transition: { duration: 0.5 }
+    }))
+
     todoActions.remove(id)
   }
 
@@ -44,12 +63,13 @@ export const TodoItem = ({
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       <S.Wrapper
         drag="x"
         dragConstraints={{ left: 0, right: 1 }}
         dragElastic={{ right: 0.15, left: 0 }}
         onDragEnd={handleDragEnd}
+        animate={animation}
       >
         <S.CheckboxTextWrapper>
           <Checkbox

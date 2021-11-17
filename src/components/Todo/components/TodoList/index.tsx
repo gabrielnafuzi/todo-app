@@ -30,11 +30,13 @@ type TodoListProps = {
   todos: Todo[]
   showDelete?: boolean
   emptyMessage?: string
+  willDesappearWhenCompleted?: boolean
 }
 
 export const TodoList = ({
   todos,
   showDelete = false,
+  willDesappearWhenCompleted = false,
   emptyMessage
 }: TodoListProps) => {
   return (
@@ -43,7 +45,11 @@ export const TodoList = ({
         {todos.length ? (
           todos.map((todo) => (
             <motion.li key={todo.id} variants={itemVariants}>
-              <TodoItem {...todo} showDelete={showDelete} />
+              <TodoItem
+                {...todo}
+                showDelete={showDelete}
+                willDesappearWhenCompleted={willDesappearWhenCompleted}
+              />
             </motion.li>
           ))
         ) : (
