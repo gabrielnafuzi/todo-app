@@ -1,6 +1,5 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion'
-
-import { theme } from '@/styles'
+import { useTheme } from 'styled-components'
 
 import * as S from './styles'
 
@@ -10,6 +9,7 @@ type CheckboxProps = {
 }
 
 export const Checkbox = ({ checked = false, onClick }: CheckboxProps) => {
+  const theme = useTheme()
   const pathLength = useMotionValue(0)
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1])
 
