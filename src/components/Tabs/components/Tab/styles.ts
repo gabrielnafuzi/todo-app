@@ -13,7 +13,7 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.li<WrapperProps>`
   ${({ theme, active }) => css`
-    color: ${theme.colors.black};
+    color: ${theme.colors.secondary};
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.semibold};
 

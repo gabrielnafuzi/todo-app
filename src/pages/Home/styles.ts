@@ -5,7 +5,7 @@ export const StickyWrapper = styled.div`
   ${({ theme }) => css`
     position: sticky;
     top: 0;
-    background: ${theme.colors.white};
+    background: ${theme.colors.background};
     z-index: 2;
   `}
 `

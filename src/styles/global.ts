@@ -21,9 +21,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
+      background: ${theme.colors.background};
       overflow-x: hidden;
       font-size: ${theme.font.sizes.medium};
-      color: ${theme.colors.black};
+      color: ${theme.colors.secondary};
     }
   `}
 `

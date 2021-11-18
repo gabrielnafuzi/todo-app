@@ -111,7 +111,7 @@ export const TodoItem = ({
 
         {showDelete && (
           <motion.div
-            style={{ color: theme.colors.gray }}
+            style={{ color: theme.colors.border }}
             whileHover={{ scale: 1.1, color: theme.colors.red }}
             whileTap={{ scale: 0.9 }}
             onClick={() => handleDelete()}

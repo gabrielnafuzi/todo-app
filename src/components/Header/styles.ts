@@ -16,7 +16,7 @@ export const Wrapper = styled(motion.header)`
 
 export const Title = styled.span`
   ${({ theme }) => css`
-    color: ${theme.colors.black};
+    color: ${theme.colors.secondary};
     font-family: 'Raleway', sans-serif;
     font-size: ${theme.font.sizes.xxlarge};
     font-weight: ${theme.font.bold};

@@ -22,7 +22,7 @@ export const Wrapper = styled(motion.div)<WrapperProps>`
     > input {
       width: 100%;
       height: 4rem;
-      border: 1px solid ${theme.colors.gray};
+      border: 1px solid ${theme.colors.border};
       border-radius: ${theme.border.radius};
       font-size: ${theme.font.sizes.large};
 

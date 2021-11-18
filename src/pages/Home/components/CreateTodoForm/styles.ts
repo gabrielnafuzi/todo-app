@@ -23,7 +23,7 @@ export const Button = styled(motion.button)`
     transition: 0.25s background ease;
 
     &:disabled {
-      background-color: ${theme.colors.gray};
+      background-color: ${theme.colors.border};
       cursor: not-allowed;
     }
 

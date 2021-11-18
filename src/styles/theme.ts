@@ -3,12 +3,15 @@ export const theme = {
     radius: '1.2rem'
   },
   colors: {
-    black: '#333',
-    darkGray: '#828282',
-    gray: '#BDBDBD',
     primary: '#2F80ED',
-    white: '#fff',
-    red: '#EB5757'
+    secondary: '#333',
+    background: '#fff',
+    text: '#828282',
+    border: '#BDBDBD',
+    lightGray: '#ccc',
+    red: '#EB5757',
+    yellow: '#e8b339',
+    white: '#fff'
   },
   font: {
     family:
