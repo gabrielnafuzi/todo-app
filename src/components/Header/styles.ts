@@ -4,9 +4,10 @@ import styled, { css } from 'styled-components'
 export const Wrapper = styled(motion.header)`
   ${({ theme }) => css`
     width: 100%;
-    max-width: max-content;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     user-select: none;
 
     margin-bottom: ${theme.spacings.xxlarge};
