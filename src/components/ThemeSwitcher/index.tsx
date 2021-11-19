@@ -10,7 +10,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <S.Wrapper isDarkMode={isDarkMode} onClick={themeActions.toggleColorScheme}>
-      {isDarkMode ? <MoonIcon /> : <SunIcon />}
+      {isDarkMode ? <SunIcon /> : <MoonIcon />}
     </S.Wrapper>
   )
 }
