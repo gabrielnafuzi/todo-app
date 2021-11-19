@@ -19,7 +19,9 @@ export const Checkbox = ({ checked = false, onClick }: CheckboxProps) => {
       whileTap={{ scale: 0.95 }}
       animate={{
         borderColor: checked ? theme.colors.primary : theme.colors.text,
-        backgroundColor: checked ? theme.colors.primary : theme.colors.white
+        backgroundColor: checked
+          ? theme.colors.primary
+          : theme.colors.background
       }}
       onTap={onClick}
     >
