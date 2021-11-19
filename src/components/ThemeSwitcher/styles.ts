@@ -1,17 +1,17 @@
 import styled, { css, DefaultTheme } from 'styled-components'
 
 type WrapperProps = {
-  isOn: boolean
+  isDarkMode: boolean
 }
 
 const wrapperModifiers = {
-  isOn: (theme: DefaultTheme) => css`
+  isDarkMode: (theme: DefaultTheme) => css`
     color: ${theme.colors.lightGray};
   `
 }
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, isOn }) => css`
+  ${({ theme, isDarkMode }) => css`
     margin-left: auto;
     margin-bottom: ${theme.spacings.small};
     color: ${theme.colors.yellow};
@@ -24,6 +24,6 @@ export const Wrapper = styled.button<WrapperProps>`
     position: relative;
     user-select: none;
 
-    ${isOn && wrapperModifiers.isOn(theme)}
+    ${isDarkMode && wrapperModifiers.isDarkMode(theme)}
   `}
 `
