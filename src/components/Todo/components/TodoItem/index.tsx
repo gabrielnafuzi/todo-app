@@ -2,10 +2,10 @@ import { useState, useMemo } from 'react'
 
 import { AnimatePresence, motion, PanInfo, useAnimation } from 'framer-motion'
 import { MdDeleteOutline } from 'react-icons/md'
+import { useTheme } from 'styled-components'
 
 import { Checkbox } from '@/components'
 import { Todo, todoActions } from '@/store'
-import { theme } from '@/styles'
 
 import * as S from './styles'
 
@@ -30,6 +30,7 @@ export const TodoItem = ({
   const [forcedStatus, setForcedStatus] =
     useState<ForcedStatus>('indeterminate')
 
+  const theme = useTheme()
   const animation = useAnimation()
 
   const handleToggleCompleted = async () => {
@@ -110,7 +111,7 @@ export const TodoItem = ({
 
         {showDelete && (
           <motion.div
-            style={{ color: theme.colors.gray }}
+            style={{ color: theme.colors.border }}
             whileHover={{ scale: 1.1, color: theme.colors.red }}
             whileTap={{ scale: 0.9 }}
             onClick={() => handleDelete()}

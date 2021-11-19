@@ -8,10 +8,10 @@ export * as todoActions from './actions'
 export * from './hooks'
 export * from './types'
 
-export const store = proxy<Store>(state)
+export const todoStore = proxy<Store>(state)
 
-subscribe(store, () => {
-  localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(store.todos))
+subscribe(todoStore, () => {
+  localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todoStore.todos))
 })
 
 export const filters: Filter[] = ['all', 'active', 'completed']

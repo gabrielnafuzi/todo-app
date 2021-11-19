@@ -1,19 +1,19 @@
 import { motion } from 'framer-motion'
-import styled, { css } from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
 
 import { TabProps } from '.'
 
 type WrapperProps = Pick<TabProps, 'active'>
 
 const wrapperModifiers = {
-  active: () => css`
-    background: #eee;
+  active: (theme: DefaultTheme) => css`
+    background: ${theme.colors.activeBackground};
   `
 }
 
 export const Wrapper = styled.li<WrapperProps>`
   ${({ theme, active }) => css`
-    color: ${theme.colors.black};
+    color: ${theme.colors.secondary};
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.semibold};
 
@@ -29,13 +29,12 @@ export const Wrapper = styled.li<WrapperProps>`
     position: relative;
     user-select: none;
     height: 100%;
-    transition: 0.6s ease;
 
     @media screen and (max-width: 23rem) {
       font-size: ${theme.font.sizes.small};
     }
 
-    ${active && wrapperModifiers.active()}
+    ${active && wrapperModifiers.active(theme)}
   `}
 `
 

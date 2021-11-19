@@ -16,7 +16,7 @@ export const CheckboxTextWrapper = styled.div`
 
 const colorAnimation = (theme: DefaultTheme) => keyframes`
   100% {
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.text};
   }
 `
 

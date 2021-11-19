@@ -22,16 +22,17 @@ export const Wrapper = styled(motion.div)<WrapperProps>`
     > input {
       width: 100%;
       height: 4rem;
-      border: 1px solid ${theme.colors.gray};
+      border: 1px solid ${theme.colors.border};
       border-radius: ${theme.border.radius};
       font-size: ${theme.font.sizes.large};
+      color: ${theme.colors.secondary};
 
       padding: 2.6rem 1rem;
       transition: 0.2s;
       outline: none;
+      background-color: transparent;
 
       &:focus {
-        background-color: transparent;
         border-color: ${theme.colors.primary};
         box-shadow: ${theme.colors.primary} 0 0 0 1px;
       }

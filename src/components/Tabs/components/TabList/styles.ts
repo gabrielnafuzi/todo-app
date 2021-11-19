@@ -10,6 +10,6 @@ export const List = styled.ul`
     width: 100%;
     height: 100%;
 
-    border-bottom: 1px solid ${theme.colors.gray};
+    border-bottom: 1px solid ${theme.colors.border};
   `}
 `

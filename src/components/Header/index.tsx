@@ -1,3 +1,5 @@
+import { ThemeSwitcher } from '@/components'
+
 import * as S from './styles'
 
 const container = {
@@ -15,6 +17,8 @@ const container = {
 
 export const Header = () => (
   <S.Wrapper variants={container} initial="hidden" animate="show">
+    <ThemeSwitcher />
+
     <S.Title>#todo</S.Title>
   </S.Wrapper>
 )

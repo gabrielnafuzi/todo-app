@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useRef, useState } from 'react'
 
 import { AnimatePresence } from 'framer-motion'
 
@@ -8,6 +8,7 @@ import { todoActions } from '@/store'
 import * as S from './styles'
 
 export const CreateTodoForm = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null)
   const [todoText, setTodoText] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [isInvalid, setIsInvalid] = useState(false)
@@ -30,6 +31,7 @@ export const CreateTodoForm = () => {
 
     todoActions.add(todoText)
     setTodoText('')
+    inputRef.current?.focus()
   }
 
   return (
@@ -47,6 +49,7 @@ export const CreateTodoForm = () => {
           onChange={handleOnChange}
           isInvalid={isInvalid}
           errorMessage={errorMessage}
+          ref={inputRef}
         />
 
         <S.Button

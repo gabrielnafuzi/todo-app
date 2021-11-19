@@ -2,14 +2,6 @@ export const theme = {
   border: {
     radius: '1.2rem'
   },
-  colors: {
-    black: '#333',
-    darkGray: '#828282',
-    gray: '#BDBDBD',
-    primary: '#2F80ED',
-    white: '#fff',
-    red: '#EB5757'
-  },
   font: {
     family:
       "Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
@@ -28,7 +20,7 @@ export const theme = {
     container: '60rem'
   },
   shadows: {
-    base: '0px 2px 6px rgba(127, 177, 243, 0.4)'
+    base: '0 0 2px 0 #a1c6f7'
   },
   spacings: {
     small: '1.8rem',
@@ -37,3 +29,5 @@ export const theme = {
     xxlarge: '4.8rem'
   }
 } as const
+
+export * from './colors'

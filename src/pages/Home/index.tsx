@@ -1,10 +1,10 @@
 import { useCallback, useRef, useState } from 'react'
 
 import { MdOutlineDelete } from 'react-icons/md'
+import { useTheme } from 'styled-components'
 
 import { Tabs, TabList, Tab, TabPanels, TabPanel, TodoList } from '@/components'
 import { Filter, useTodos, todoActions } from '@/store'
-import { theme } from '@/styles'
 
 import { CreateTodoForm } from './components'
 import * as S from './styles'
@@ -17,6 +17,8 @@ const tabParam = searchParams.get('tab') as TabsType
 const initialTab = tabs.includes(tabParam) ? tabParam : 'All'
 
 export const Home = () => {
+  const theme = useTheme()
+
   const scrollToTopRef = useRef<HTMLDivElement | null>(null)
   const stickyRef = useRef<HTMLDivElement | null>(null)
   const [selectedTab, setSelectedTab] = useState<TabsType>(initialTab)

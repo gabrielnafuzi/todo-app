@@ -18,12 +18,20 @@ export const GlobalStyles = createGlobalStyle`
     button,
     input {
       font-family: ${theme.font.family};
+      caret-color: ${theme.colors.primary};
+    }
+
+    *,
+    button,
+    input {
+      transition: background 0.3s ease-out;
     }
 
     body {
+      background: ${theme.colors.background};
       overflow-x: hidden;
       font-size: ${theme.font.sizes.medium};
-      color: ${theme.colors.black};
+      color: ${theme.colors.secondary};
     }
   `}
 `

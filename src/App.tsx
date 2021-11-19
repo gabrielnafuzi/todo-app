@@ -1,20 +1,36 @@
+import { useEffect } from 'react'
+
 import { ThemeProvider } from 'styled-components'
 
 import { Header, Container } from '@/components'
 import { Home } from '@/pages/Home'
 import { RegisterPW } from '@/RegisterSW'
-import { GlobalStyles, theme } from '@/styles'
+import { useTheme } from '@/store'
+import { GlobalStyles, theme, themeColors } from '@/styles'
 
-export const App = () => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
+export const App = () => {
+  const { colorScheme } = useTheme()
 
-    <Container>
-      <Header />
+  useEffect(() => {
+    document.documentElement.style.setProperty('color-scheme', colorScheme)
+  }, [colorScheme])
 
-      <Home />
-    </Container>
+  return (
+    <ThemeProvider
+      theme={{
+        ...theme,
+        colors: { ...themeColors[colorScheme] }
+      }}
+    >
+      <GlobalStyles />
 
-    <RegisterPW />
-  </ThemeProvider>
-)
+      <Container>
+        <Header />
+
+        <Home />
+      </Container>
+
+      <RegisterPW />
+    </ThemeProvider>
+  )
+}
