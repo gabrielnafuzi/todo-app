@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 
-import { store, Todo } from '.'
+import { todoStore as store, Todo } from '.'
 
 export const add = (text: string) => {
   const newTodo: Todo = {

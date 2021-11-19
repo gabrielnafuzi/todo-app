@@ -1,6 +1,6 @@
 import { useSnapshot } from 'valtio'
 
-import { Filter, store } from '.'
+import { Filter, todoStore as store } from '.'
 
 export const useTodos = () => {
   const snapshot = useSnapshot(store)

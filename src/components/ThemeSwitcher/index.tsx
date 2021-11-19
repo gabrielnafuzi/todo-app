@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { themeActions, useTheme } from '@/store'
 
 import { MoonIcon, SunIcon } from './components'
 import * as S from './styles'
 
 export const ThemeSwitcher = () => {
-  const [isOn, setIsOn] = useState(false)
+  const { colorScheme } = useTheme()
 
-  const toggleSwitch = () => setIsOn(!isOn)
+  const isDarkMode = colorScheme === 'dark'
 
   return (
-    <S.Wrapper isOn={isOn} onClick={toggleSwitch}>
-      {isOn ? <MoonIcon /> : <SunIcon />}
+    <S.Wrapper isOn={isDarkMode} onClick={themeActions.toggleColorScheme}>
+      {isDarkMode ? <MoonIcon /> : <SunIcon />}
     </S.Wrapper>
   )
 }

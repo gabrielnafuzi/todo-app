@@ -9,6 +9,7 @@ export const Wrapper = styled(motion.header)`
     justify-content: center;
     align-items: center;
     user-select: none;
+    padding: 0 ${theme.spacings.small};
 
     margin-bottom: ${theme.spacings.xxlarge};
   `}
