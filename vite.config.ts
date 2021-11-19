@@ -16,7 +16,8 @@ export default defineConfig({
         name: 'todo app',
         short_name: 'todoapp',
         description: 'a simple todo app',
-        theme_color: '#2F80ED',
+        theme_color: '#252329',
+        background_color: '#252329',
         icons: [
           {
             src: 'img/icon-192.png',
