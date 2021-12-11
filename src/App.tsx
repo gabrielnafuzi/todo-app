@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import { Header, Container } from '@/components'
-import { Home } from '@/pages/Home'
+import { TodoPage } from '@/pages/TodoPage'
 import { RegisterPW } from '@/RegisterSW'
 import { useTheme } from '@/store'
 import { GlobalStyles, theme, themeColors } from '@/styles'
@@ -31,7 +31,7 @@ export const App = () => {
       <Container>
         <Header />
 
-        <Home />
+        <TodoPage />
       </Container>
 
       <RegisterPW />

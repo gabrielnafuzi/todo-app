@@ -3,10 +3,10 @@ import { useCallback, useRef, useState } from 'react'
 import { MdOutlineDelete } from 'react-icons/md'
 import { useTheme } from 'styled-components'
 
-import { Tabs, TabList, Tab, TabPanels, TabPanel, TodoList } from '@/components'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@/components'
 import { Filter, useTodos, todoActions } from '@/store'
 
-import { CreateTodoForm } from './components'
+import { CreateTodoForm, TodoList } from './components'
 import * as S from './styles'
 
 const tabs = ['All', 'Active', 'Completed'] as const
@@ -16,7 +16,7 @@ const searchParams = new URLSearchParams(window.location.search)
 const tabParam = searchParams.get('tab') as TabsType
 const initialTab = tabs.includes(tabParam) ? tabParam : 'All'
 
-export const Home = () => {
+export const TodoPage = () => {
   const theme = useTheme()
 
   const scrollToTopRef = useRef<HTMLDivElement | null>(null)

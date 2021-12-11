@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { EmptyTodoMessage, TodoItem } from '@/components'
 import { Todo } from '@/store'
 
+import { EmptyTodoMessage, TodoItem } from './partials'
 import * as S from './styles'
 
 const listVariants = {
