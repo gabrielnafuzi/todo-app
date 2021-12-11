@@ -27,4 +27,4 @@ export const Tabs = ({ children }: TabsProps) => {
   )
 }
 
-export * from './components'
+export * from './partials'

@@ -1,6 +1,6 @@
 import { themeActions, useTheme } from '@/store'
 
-import { MoonIcon, SunIcon } from './components'
+import { MoonIcon, SunIcon } from './partials'
 import * as S from './styles'
 
 export const ThemeSwitcher = () => {
