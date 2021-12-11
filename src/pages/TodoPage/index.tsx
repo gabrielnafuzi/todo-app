@@ -1,12 +1,14 @@
 import { useCallback, useRef, useState } from 'react'
 
-import { MdOutlineDelete } from 'react-icons/md'
-import { useTheme } from 'styled-components'
-
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@/components'
-import { Filter, useTodos, todoActions } from '@/store'
+import { Filter, useTodos } from '@/store'
 
-import { CreateTodoForm, TodoList } from './components'
+import {
+  ActiveTodosTab,
+  AllTodosTab,
+  CompletedTodosTab,
+  CreateTodoForm
+} from './components'
 import * as S from './styles'
 
 const tabs = ['All', 'Active', 'Completed'] as const
@@ -17,8 +19,6 @@ const tabParam = searchParams.get('tab') as TabsType
 const initialTab = tabs.includes(tabParam) ? tabParam : 'All'
 
 export const TodoPage = () => {
-  const theme = useTheme()
-
   const scrollToTopRef = useRef<HTMLDivElement | null>(null)
   const stickyRef = useRef<HTMLDivElement | null>(null)
   const [selectedTab, setSelectedTab] = useState<TabsType>(initialTab)
@@ -63,43 +63,23 @@ export const TodoPage = () => {
         </TabList>
       </S.StickyWrapper>
 
-      <TabPanels activeTab={selectedTab}>
-        <TabPanel tabKey="all">
-          <CreateTodoForm />
+      <S.TabsPanelsWrapper>
+        {selectedTab !== 'Completed' && <CreateTodoForm />}
 
-          <TodoList todos={getTodos()} />
-        </TabPanel>
+        <TabPanels activeTab={selectedTab}>
+          <TabPanel tabKey="all">
+            <AllTodosTab />
+          </TabPanel>
 
-        <TabPanel tabKey="active">
-          <CreateTodoForm />
+          <TabPanel tabKey="active">
+            <ActiveTodosTab />
+          </TabPanel>
 
-          <TodoList
-            todos={getTodos('active')}
-            emptyMessage="you don't have any active todo, why not take a break?"
-            willDisappearWhenCompleted
-          />
-        </TabPanel>
-
-        <TabPanel tabKey="completed">
-          <TodoList
-            todos={getTodos('completed')}
-            showDelete
-            emptyMessage="you don't have any completed todo, let's get back to work!"
-            willDisappearWhenCompleted
-          />
-
-          {!!getFilteredTodosLength('Completed') && (
-            <S.ClearCompletedButton
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.99 }}
-              onClick={() => todoActions.removeAllCompleted()}
-            >
-              <MdOutlineDelete size={14} color={theme.colors.white} />
-              <span>delete all</span>
-            </S.ClearCompletedButton>
-          )}
-        </TabPanel>
-      </TabPanels>
+          <TabPanel tabKey="completed">
+            <CompletedTodosTab />
+          </TabPanel>
+        </TabPanels>
+      </S.TabsPanelsWrapper>
     </Tabs>
   )
 }

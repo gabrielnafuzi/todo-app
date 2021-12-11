@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import { AnimatePresence } from 'framer-motion'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -10,7 +12,7 @@ type FormInputs = {
   text: string
 }
 
-export const CreateTodoForm = () => {
+const BaseCreateTodoForm = () => {
   const { register, handleSubmit, formState, resetField, setFocus } =
     useForm<FormInputs>()
 
@@ -48,3 +50,5 @@ export const CreateTodoForm = () => {
     </AnimatePresence>
   )
 }
+
+export const CreateTodoForm = memo(BaseCreateTodoForm)

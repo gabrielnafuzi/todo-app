@@ -1,15 +1,6 @@
 import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
-export const StickyWrapper = styled.div`
-  ${({ theme }) => css`
-    position: sticky;
-    top: 0;
-    background: ${theme.colors.background};
-    z-index: 2;
-  `}
-`
-
 export const ClearCompletedButton = styled(motion.button)`
   ${({ theme }) => css`
     background: ${theme.colors.red};
@@ -30,14 +21,5 @@ export const ClearCompletedButton = styled(motion.button)`
       font-weight: ${theme.font.semibold};
       color: ${theme.colors.white};
     }
-  `}
-`
-
-export const TabsPanelsWrapper = styled.div`
-  ${({ theme }) => css`
-    margin-top: ${theme.spacings.small};
-    width: 100%;
-    height: 100%;
-    padding: 0rem 1.6rem;
   `}
 `

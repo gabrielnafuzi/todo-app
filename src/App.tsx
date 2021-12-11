@@ -20,21 +20,23 @@ export const App = () => {
   }, [colorScheme])
 
   return (
-    <ThemeProvider
-      theme={{
-        ...theme,
-        colors: { ...themeColors[colorScheme] }
-      }}
-    >
-      <GlobalStyles />
+    <>
+      <ThemeProvider
+        theme={{
+          ...theme,
+          colors: { ...themeColors[colorScheme] }
+        }}
+      >
+        <GlobalStyles />
 
-      <Container>
-        <Header />
+        <Container>
+          <Header />
 
-        <TodoPage />
-      </Container>
+          <TodoPage />
+        </Container>
+      </ThemeProvider>
 
       <RegisterPW />
-    </ThemeProvider>
+    </>
   )
 }

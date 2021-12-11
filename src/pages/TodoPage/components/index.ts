@@ -1,2 +1,5 @@
 export * from './CreateTodoForm'
 export * from './TodoList'
+export * from './AllTodosTab'
+export * from './ActiveTodosTab'
+export * from './CompletedTodosTab'
