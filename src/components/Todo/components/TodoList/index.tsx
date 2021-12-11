@@ -39,6 +39,8 @@ export const TodoList = ({
   willDisappearWhenCompleted = false,
   emptyMessage
 }: TodoListProps) => {
+  console.log('TodoList render')
+
   return (
     <AnimatePresence>
       <S.Wrapper variants={listVariants} initial="hidden" animate="show">

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, memo } from 'react'
 
 import { AnimatePresence, motion, PanInfo, useAnimation } from 'framer-motion'
 import { MdDeleteOutline } from 'react-icons/md'
@@ -19,7 +19,7 @@ export type TodoItemProps = {
   willDisappearWhenCompleted?: boolean
 } & Todo
 
-export const TodoItem = ({
+const BaseTodoItem = ({
   completeOnDragEnd = true,
   id,
   isCompleted,
@@ -123,3 +123,5 @@ export const TodoItem = ({
     </AnimatePresence>
   )
 }
+
+export const TodoItem = memo(BaseTodoItem)
