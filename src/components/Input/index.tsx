@@ -2,7 +2,8 @@ import {
   ChangeEvent,
   forwardRef,
   ForwardRefRenderFunction,
-  HTMLProps
+  HTMLProps,
+  useCallback
 } from 'react'
 
 import { AnimatePresence, HTMLMotionProps } from 'framer-motion'
@@ -17,12 +18,12 @@ export type InputProps = {
 } & Omit<HTMLProps<HTMLInputElement>, 'ref' | 'children' | 'onChange'>
 
 const BaseInput: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { isInvalid = false, errorMessage, motionProps, onChange, ...props },
+  { isInvalid = false, errorMessage, motionProps, ...props },
   ref
 ) => {
   return (
     <S.Wrapper {...motionProps} isInvalid={isInvalid}>
-      <input {...props} ref={ref} onChange={onChange} />
+      <input ref={ref} {...props} />
 
       <AnimatePresence initial={false}>
         {!!errorMessage && (

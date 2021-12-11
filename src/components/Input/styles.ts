@@ -46,6 +46,7 @@ export const ErrorMessage = styled(motion.div)`
   ${({ theme }) => css`
     color: ${theme.colors.red};
     font-size: ${theme.font.sizes.small};
+    margin-top: 0.15rem;
     margin-left: 0.4rem;
   `}
 `
